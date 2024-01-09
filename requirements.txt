@@ -1,5 +1,5 @@
 flask
-map-api
+mal-api
 httpx
 pillow
 fast-colorthief
