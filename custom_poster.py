@@ -42,7 +42,7 @@ class CustomPoster:
 
         return img.crop((left, top, right, bottom))
 
-    def format_title(self, maxlen: int = 18, max_lines: int = 3) -> str:
+    def format_title(self, maxlen: int = 20, max_lines: int = 3) -> str:
         title = self.poster_info.get("title")
         words = title.split()
         lines = []
@@ -67,7 +67,7 @@ class CustomPoster:
             lines.append(" ".join(current_line))
         else:
             last_line = lines[-1]
-            lines[-1] = last_line[: maxlen - 2] + "..."
+            lines[-1] = last_line[:maxlen] + "..."
 
         return "\n".join(lines)
 
@@ -206,7 +206,7 @@ class CustomPoster:
 
         draw = ImageDraw.Draw(opacity_layer, mode="RGBA")
         boldfont = ImageFont.truetype("Assets/Overpass-SemiBold.ttf", 65)
-        normalfont = ImageFont.truetype("Assets/Overpass-Medium.ttf", 35)
+        normalfont = ImageFont.truetype("Assets/Overpass-SemiBold.ttf", 35)
         smallfont = ImageFont.truetype("Assets/Overpass-Medium.ttf", 25)
 
         font_color = (255, 255, 255)
