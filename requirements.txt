@@ -3,4 +3,4 @@ mal-api
 httpx
 pillow
 fast-colorthief
-python-dot-env
+python-dotenv
