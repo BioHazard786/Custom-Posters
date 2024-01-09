@@ -1,0 +1,6 @@
+flask
+map-api
+httpx
+pillow
+fast-colorthief
+python-dot-env
