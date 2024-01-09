@@ -31,14 +31,13 @@ def mal_poster(id):
     except:
         return jsonify(error="MAL anime id is incorrect", malID=id)
 
-    if anime.type == "Movie":
-        subtitle = f"Movie{f' • {anime.aired}' if anime.aired else ''}"
+    if anime.type:
+        if anime.type == "Movie":
+            subtitle = f"""Movie{f' • {anime.aired.split(",")[-1].strip()}' if anime.aired else ''} • {anime.duration}"""
+        else:
+            subtitle = f"{f'{anime.premiered} • ' if anime.premiered else ''}{f'{anime.episodes} Episodes' if anime.episodes else anime.type or "Anime"}"
     else:
-        subtitle = (
-            f"{f'{anime.premiered} • ' if anime.premiered else ''}{f'{anime.episodes} Episodes' if anime.episodes else ''}"
-            or anime.type
-            or "Anime"
-        )
+        subtitle = f"{f'{anime.premiered} • ' if anime.premiered else ''}{f'{anime.episodes} Episodes' if anime.episodes else anime.type or "Anime"}"
 
     poster = CustomPoster(
         {
