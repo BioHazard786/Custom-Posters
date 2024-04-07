@@ -82,9 +82,11 @@ def tmdb_serier_poster(id):
             ],
         },
         f"https://image.tmdb.org/t/p/w500{tv_info.get('poster_path')}",
-        f"https://image.tmdb.org/t/p/w500{tv_info.get('backdrop_path')}"
-        if tv_info.get("backdrop_path", None)
-        else None,
+        (
+            f"https://image.tmdb.org/t/p/w500{tv_info.get('backdrop_path')}"
+            if tv_info.get("backdrop_path", None)
+            else None
+        ),
     )
     try:
         poster = poster.generate()
@@ -114,8 +116,8 @@ def tmdb_season_poster(series_id, season_number):
     poster = CustomPoster(
         {
             "subtitle": f"{len(season_info.get('episodes', []))} Episodes",
-            "title": season_info.get("name", None),
-            "makers": [tv_info.get("name", "")],
+            "title": tv_info.get("name", ""),
+            "makers": [season_info.get("name", None)],
             "score": f"{int(season_info.get('vote_average') * 10)}%",
             "tags": [
                 tag
@@ -124,9 +126,11 @@ def tmdb_season_poster(series_id, season_number):
             ],
         },
         f"https://image.tmdb.org/t/p/w500{season_info.get('poster_path', None) or tv_info.get('poster_path', None)}",
-        f"https://image.tmdb.org/t/p/w500{tv_info.get('backdrop_path')}"
-        if tv_info.get("backdrop_path", None)
-        else None,
+        (
+            f"https://image.tmdb.org/t/p/w500{tv_info.get('backdrop_path')}"
+            if tv_info.get("backdrop_path", None)
+            else None
+        ),
     )
     try:
         poster = poster.generate()
@@ -163,9 +167,11 @@ def tmdb_movie_poster(id):
             ],
         },
         f"https://image.tmdb.org/t/p/w500{movie_info.get('poster_path')}",
-        f"https://image.tmdb.org/t/p/w500{movie_info.get('backdrop_path')}"
-        if movie_info.get("backdrop_path", None)
-        else None,
+        (
+            f"https://image.tmdb.org/t/p/w500{movie_info.get('backdrop_path')}"
+            if movie_info.get("backdrop_path", None)
+            else None
+        ),
     )
     try:
         poster = poster.generate()
@@ -176,5 +182,5 @@ def tmdb_movie_poster(id):
 
 
 # Only for testing purpose
-# if __name__ == "__main__":
-#     app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)
