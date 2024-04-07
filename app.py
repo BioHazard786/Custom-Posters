@@ -182,5 +182,5 @@ def tmdb_movie_poster(id):
 
 
 # Only for testing purpose
-if __name__ == "__main__":
-    app.run(debug=True)
+# if __name__ == "__main__":
+#     app.run(debug=True)
