@@ -87,7 +87,7 @@ class CustomPoster:
                     (x_axis, y_axis),
                     (x_axis + text_width + (padding * 2), y_axis + 30 + padding),
                 ],
-                fill=(*font_color, 40),
+                fill=(*font_color, 50),
                 radius=7,
             )
             draw.text(
@@ -174,10 +174,10 @@ class CustomPoster:
         overlay = Image.new(
             "RGBA",
             (self.width - self.cutoff_width + self.offset, self.height),
-            (int(r * 0.1), int(g * 0.1), int(b * 0.1), 180),
+            (int(r * 0.15), int(g * 0.15), int(b * 0.15), 150),
         )
         poster_overlay = Image.alpha_composite(backdrop.convert("RGBA"), overlay)
-        poster_overlay = poster_overlay.filter(ImageFilter.GaussianBlur(radius=15))
+        poster_overlay = poster_overlay.filter(ImageFilter.GaussianBlur(radius=10))
 
         mask_width, mask_height = (
             self.width - self.cutoff_width + self.offset,
