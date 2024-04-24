@@ -92,7 +92,8 @@ def tmdb_serier_poster(id):
         poster = poster.generate()
         poster.seek(0)
         return send_file(poster, mimetype="image/png")
-    except:
+    except Exception as e:
+        print(str(e))
         return jsonify(error="Something went wrong while generating poster")
 
 
@@ -177,7 +178,8 @@ def tmdb_movie_poster(id):
         poster = poster.generate()
         poster.seek(0)
         return send_file(poster, mimetype="image/png")
-    except:
+    except Exception as e:
+        print(str(e))
         return jsonify(error="Something went wrong while generating poster")
 
 

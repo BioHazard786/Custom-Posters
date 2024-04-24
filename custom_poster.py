@@ -161,10 +161,18 @@ class CustomPoster:
 
         if backdrop_data:
             backdrop = Image.open(backdrop_data)
-            res_width = self.width - self.cutoff_width + self.offset
+            backdrop_width, backdrop_height = backdrop.size
             backdrop = backdrop.resize(
-                (res_width, self.height), Image.Resampling.LANCZOS
+                (int(self.height / backdrop_height * backdrop_width), self.height),
+                resample=Image.Resampling.LANCZOS,
             )
+            backdrop_width, backdrop_height = backdrop.size
+            crop_width = self.width - self.cutoff_width + self.offset
+            left = (backdrop_width - crop_width) // 2
+            top = 0
+            right = (backdrop_width + crop_width) // 2
+            bottom = backdrop_height
+            backdrop = backdrop.crop((left, top, right, bottom))
         else:
             backdrop = self.crop(poster)
 
@@ -174,7 +182,7 @@ class CustomPoster:
         overlay = Image.new(
             "RGBA",
             (self.width - self.cutoff_width + self.offset, self.height),
-            (int(r * 0.15), int(g * 0.15), int(b * 0.15), 150),
+            (int(r * 0.12), int(g * 0.12), int(b * 0.12), 150),
         )
         poster_overlay = Image.alpha_composite(backdrop.convert("RGBA"), overlay)
         poster_overlay = poster_overlay.filter(ImageFilter.GaussianBlur(radius=10))
