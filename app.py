@@ -183,6 +183,6 @@ def tmdb_movie_poster(id):
         return jsonify(error="Something went wrong while generating poster")
 
 
-# Only for testing purpose
+# # Only for testing purpose
 # if __name__ == "__main__":
 #     app.run(debug=True)

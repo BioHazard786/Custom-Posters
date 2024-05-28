@@ -182,7 +182,7 @@ class CustomPoster:
         overlay = Image.new(
             "RGBA",
             (self.width - self.cutoff_width + self.offset, self.height),
-            (int(r * 0.12), int(g * 0.12), int(b * 0.12), 150),
+            (int(r * 0.12), int(g * 0.12), int(b * 0.12), 135),
         )
         poster_overlay = Image.alpha_composite(backdrop.convert("RGBA"), overlay)
         poster_overlay = poster_overlay.filter(ImageFilter.GaussianBlur(radius=10))
