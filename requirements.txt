@@ -4,3 +4,4 @@ httpx
 pillow
 fast-colorthief
 python-dotenv
+gunicorn

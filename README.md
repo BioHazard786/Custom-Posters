@@ -26,6 +26,8 @@
 
 [![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/BiioHazard786/Custom-Posters)
 
+In production build command is - `gunicorn -w 4 -b 0.0.0.0:8000 app:app`
+
 ## Table of Contents
 
 - [Getting Started](#getting-started)
